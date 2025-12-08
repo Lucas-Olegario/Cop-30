@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
 
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mainNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-           
+          
             if (window.innerWidth < 768) {
                 mainNav.classList.remove('active');
                 navToggle.setAttribute('aria-expanded', 'false');
@@ -27,14 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTime = document.getElementById('modal-time');
     const modalDetails = document.getElementById('modal-details');
 
-
+ 
     const sessionData = [
         { id: 1, title: 'Financiamento Climático Global', time: 'Segunda-feira, 11 de Novembro | 10:00 - 12:00', details: 'Sessão plenária de alto nível para discutir metas de mobilização de US$ 100 bilhões e o papel dos bancos de desenvolvimento na descarbonização. Foco em Mecanismos Inovadores de Mitigação.' },
         { id: 2, title: 'Transição Energética Justa: Desafios e Soluções', time: 'Terça-feira, 12 de Novembro | 14:30 - 16:30', details: 'Painel sobre o abandono dos combustíveis fósseis, segurança energética e a importância da equidade social no processo de mudança para matrizes renováveis.' },
-ML
+        
     ];
 
-    
+  
     document.querySelectorAll('.open-modal').forEach(button => {
         button.addEventListener('click', () => {
             const sessionId = parseInt(button.dataset.sessionId);
@@ -45,20 +46,20 @@ ML
                 modalTime.textContent = `Horário: ${session.time}`;
                 modalDetails.textContent = session.details;
                 
-                
+           
                 modal.style.display = 'block';
                 modal.setAttribute('aria-hidden', 'false');
             }
         });
     });
 
-    
+
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
         modal.setAttribute('aria-hidden', 'true');
     });
 
-   
+    
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
             modal.style.display = 'none';
@@ -66,12 +67,12 @@ ML
         }
     });
 
-
+   
     const form = document.getElementById('registration-form');
     const formMessage = document.getElementById('form-message');
 
     form.addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); 
         formMessage.textContent = '';
         formMessage.className = 'form-message'; 
         
@@ -82,7 +83,7 @@ ML
         const lgpd = document.getElementById('lgpd').checked;
         const interesses = document.querySelectorAll('input[name="interesse"]:checked');
         
-      
+        
         if (nome.length < 3) {
             isValid = false;
             alert('Por favor, insira um nome completo válido (mínimo 3 caracteres).');
@@ -90,7 +91,7 @@ ML
             return;
         }
 
- 
+        
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             isValid = false;
@@ -98,6 +99,7 @@ ML
             document.getElementById('email').focus();
             return;
         }
+
 
         if (uf === "") {
             isValid = false;
@@ -124,7 +126,7 @@ ML
             formMessage.classList.add('error');
         }
         
-
+    
         formMessage.style.display = 'block';
     });
 });
